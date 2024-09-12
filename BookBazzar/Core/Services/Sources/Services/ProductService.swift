@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ProductService.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
@@ -9,8 +9,7 @@ import Foundation
 import Models
 
 public class ProductService {
-
-    public init() { }
+    public init() {}
 
     public func fetchProducts() async throws -> [Product] {
         return [

@@ -46,7 +46,7 @@ public struct ProductDetailView: View {
                 }
                 .padding(.horizontal, Spacing.large)
 
-                Button(action: { }) {
+                Button(action: {}) {
                     Text("Purchase for $\(product.price, specifier: "%.2f")")
                         .font(Typography.body)
                         .fontWeight(.bold)

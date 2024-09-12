@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SettingsView.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
@@ -14,7 +14,7 @@ public struct SettingsView: View {
     @State private var darkModeEnabled = false
     @EnvironmentObject private var session: UserSession
 
-    public init() { }
+    public init() {}
 
     public var body: some View {
         Form {

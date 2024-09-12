@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CustomTextField.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
@@ -19,7 +19,7 @@ public struct CustomTextField: View {
         isSecure: Bool = false
     ) {
         self.placeholder = placeholder
-        self._text = text
+        _text = text
         self.isSecure = isSecure
     }
 

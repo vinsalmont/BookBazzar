@@ -7,7 +7,7 @@ public struct FavoritesView: View {
     @EnvironmentObject private var session: UserSession
     @EnvironmentObject private var productStore: ProductStore
 
-    public init() { }
+    public init() {}
 
     public var body: some View {
         ScrollView {

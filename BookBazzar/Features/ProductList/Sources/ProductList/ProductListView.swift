@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ProductListView.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
@@ -15,7 +15,7 @@ public struct ProductListView: View {
     @EnvironmentObject var productStore: ProductStore
     @EnvironmentObject var navigationManager: NavigationManager
 
-    public init() { }
+    public init() {}
 
     public var body: some View {
         VStack {

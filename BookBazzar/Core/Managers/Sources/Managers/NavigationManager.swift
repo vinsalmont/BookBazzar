@@ -4,7 +4,7 @@ import SwiftUI
 public class NavigationManager: ObservableObject {
     @Published public var path = NavigationPath()
 
-    public init() { }
+    public init() {}
 
     public func showProductDetail(for product: Product) {
         path.append(product)

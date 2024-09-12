@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UserSession.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
@@ -12,7 +12,7 @@ public class UserSession: ObservableObject {
     @Published public var userToken: String?
     @Published public var favorites: [Product] = []
 
-    public init() { }
+    public init() {}
 
     public func login(username: String, password: String) async -> Bool {
         if username == "user" && password == "password" {
@@ -35,6 +35,7 @@ public class UserSession: ObservableObject {
 }
 
 // MARK: - Favorites
+
 public extension UserSession {
     func addFavorite(product: Product) {
         if !isFavorite(product: product) {

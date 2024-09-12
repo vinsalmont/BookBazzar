@@ -11,7 +11,7 @@ public struct LoginView: View {
     @State private var isRegistering = false
     @State private var showPassword = false
 
-    public init() { }
+    public init() {}
 
     public var body: some View {
         VStack {

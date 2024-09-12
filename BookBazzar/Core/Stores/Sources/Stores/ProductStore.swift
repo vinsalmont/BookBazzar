@@ -6,7 +6,7 @@ public class ProductStore: ObservableObject {
     @Published public var products: [Product] = []
     private let networkService = ProductService()
 
-    public init() { }
+    public init() {}
 
     public func loadData() async {
         do {
@@ -20,5 +20,4 @@ public class ProductStore: ObservableObject {
             debugPrint("Error loading products: \(error.localizedDescription)")
         }
     }
-
 }

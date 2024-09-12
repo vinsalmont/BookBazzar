@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RegisterView.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
@@ -21,7 +21,7 @@ public struct RegisterView: View {
     @EnvironmentObject var session: UserSession
 
     public init(isRegistering: Binding<Bool>) {
-        self._isRegistering = isRegistering
+        _isRegistering = isRegistering
     }
 
     public var body: some View {
@@ -80,7 +80,6 @@ public struct RegisterView: View {
         .shadow(radius: 5)
         .padding(.horizontal, Spacing.horizontal)
     }
-
 }
 
 #Preview {

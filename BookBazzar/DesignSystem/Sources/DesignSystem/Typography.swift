@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Typography.swift
 //
 //
 //  Created by Vinícius Salmont on 11/09/24.
