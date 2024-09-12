@@ -150,15 +150,6 @@ The project follows a **Model-View (MV) architecture** with a strong emphasis on
 
 ---
 
-## Future Improvements
-
-- **Backend Integration**: Add real backend services for data fetching and user authentication.
-- **Enhanced Validation**: Improve the password and input validation for a more robust authentication experience.
-- **Dark Mode Support**: Add support for dark mode to enhance user experience.
-- **Search Feature**: Implement a search feature to allow users to find books easily.
-
----
-
 ## Conclusion
 
 The **BookBazzar** project illustrates how to apply a **Model-View (MV)** architecture in a modular SwiftUI app. By organizing the app into independent modules and separating the UI (View) from the data (Model), the project remains scalable, maintainable, and easy to extend.
