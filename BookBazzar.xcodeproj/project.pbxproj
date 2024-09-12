@@ -64,7 +64,7 @@
 		D45848A02C9239CF00A89A75 /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Authentication; sourceTree = "<group>"; };
 		D45848A12C923DB400A89A75 /* Favorites */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Favorites; sourceTree = "<group>"; };
 		D45848A32C923FB400A89A75 /* Settings */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Settings; sourceTree = "<group>"; };
-		D45848A42C92410700A89A75 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Managers; path = BookBazzar/Features/Managers; sourceTree = SOURCE_ROOT; };
+		D45848A42C92410700A89A75 /* Managers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Managers; path = BookBazzar/Core/Managers; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -1,94 +1,164 @@
 
-# Password Handling Feature - README
+# BookBazzar - Modular SwiftUI with MV(Model-View) Architecture Demo
 
 ## Overview
 
-This project includes a feature for handling user passwords securely. It encompasses functionalities such as **showing/hiding the password** during input, **password validation**, and **error messaging** for improper password formats. The structure is modular to ensure easy maintenance, scalability, and security.
+The **BookBazzar** demo project exemplifies the **Model-View (MV) architecture** in **SwiftUI** alongside a modular project structure. The primary focus of the project is to separate the user interface (View) from the data models (Model) while organizing different app features into independent modules. This separation enhances maintainability, scalability, and reusability in the codebase.
 
-## Architecture
+## Project Goals
 
-The password handling feature follows **MVVM (Model-View-ViewModel)** architecture, ensuring separation of concerns and making the UI reactive to state changes, such as password visibility and validation.
+- **Modular Design**: Features such as authentication, book listings, and user settings are organized into separate modules, allowing independent development, testing, and integration.
+- **Model-View Architecture**: The project showcases how to implement the **Model-View (MV)** architecture in SwiftUI by keeping the data logic (Model) and UI (View) separate.
+- **Core Features**:
+  - **Authentication**: Login and registration views.
+  - **Book Management**: Listing and displaying book details.
+  - **Favorites**: Users can add and remove books from their favorites.
+  - **Settings**: Allows users to manage profile and app preferences.
 
-### 1. **Model (UserSession)**
-   - Manages the **business logic** of password security (e.g., checking if the password meets complexity requirements, handling user authentication).
-   - Holds the user's login session and password state.
-   
-### 2. **ViewModel (PasswordViewModel)**
-   - Responsible for the **password visibility toggle** and **validation logic**.
-   - Interacts with the `UserSession` model to determine if the password is valid and updates the state of the view accordingly.
-   - Handles state management for showing/hiding the password, detecting input changes, and managing error messages.
+## Architecture Overview
 
-### 3. **View (PasswordFieldView)**
-   - Displays the **password input field** with the option to show/hide the password using a toggle button (e.g., an eye icon).
-   - Implements bindings to the **ViewModel** to update the UI based on user actions (e.g., showing error messages, showing/hiding the password).
-   - This is the **SwiftUI** component responsible for the user interface and interactions.
+The project follows a **Model-View (MV) architecture** with a strong emphasis on **modularity**. Each feature is organized as an independent module that follows the MV structure:
+
+- **Model**: Responsible for handling the app’s data logic, including fetching and storing information (e.g., book listings, user sessions).
+- **View**: Contains SwiftUI views responsible for rendering the user interface and displaying data provided by the Model.
+
+### Modules Overview
+
+1. **Core Modules**:
+   - **Models**: Defines the core data models such as `Product` and `UserSession`.
+   - **Services**: Handles API communication and business logic.
+   - **Stores**: Manages state storage, including book listings and user session.
+
+2. **Feature Modules**:
+   - **Authentication**: Manages user login and registration.
+   - **Favorites**: Handles favorites management for books.
+   - **Book Management**: Contains the book listing and detailed views.
+   - **Settings**: Provides the user interface for app settings.
+   - **UIComponents**: Contains reusable components like buttons and text fields.
 
 ---
 
 ## File Structure
 
 ```
-📦 YourProject
- ┣ 📂 Models
- ┃ ┗ 📜 UserSession.swift
- ┣ 📂 ViewModels
- ┃ ┗ 📜 PasswordViewModel.swift
- ┣ 📂 Views
- ┃ ┣ 📜 PasswordFieldView.swift
- ┃ ┗ 📜 LoginView.swift
- ┗ 📂 Resources
-    ┗ 📜 Localizable.strings
+📦 BookBazzar
+ ┣ 📂 App
+ ┃ ┗ 📜 BookBazzarApp.swift
+ ┣ 📂 Core
+ ┃ ┣ 📂 Models
+ ┃ ┃ ┗ 📜 Product.swift
+ ┃ ┃ ┗ 📜 UserSession.swift
+ ┃ ┣ 📂 Services
+ ┃ ┃ ┗ 📜 ProductService.swift
+ ┃ ┣ 📂 Stores
+ ┃ ┃ ┗ 📜 ProductStore.swift
+ ┣ 📂 DesignSystem
+ ┃ ┗ 📜 Colors.swift
+ ┃ ┗ 📜 Spacing.swift
+ ┃ ┗ 📜 Typography.swift
+ ┣ 📂 Features
+ ┃ ┣ 📂 Authentication
+ ┃ ┃ ┗ 📜 LoginView.swift
+ ┃ ┃ ┗ 📜 RegisterView.swift
+ ┃ ┣ 📂 Favorites
+ ┃ ┃ ┗ 📜 FavoritesView.swift
+ ┃ ┣ 📂 ProductDetail
+ ┃ ┃ ┗ 📜 ProductDetailView.swift
+ ┃ ┣ 📂 ProductList
+ ┃ ┃ ┗ 📜 ProductListView.swift
+ ┃ ┗ 📂 Settings
+ ┃ ┃ ┗ 📜 SettingsView.swift
+ ┣ 📂 UIComponents
+ ┃ ┗ 📜 CustomButton.swift
+ ┃ ┗ 📜 CustomTextField.swift
+ ┣ 📂 Preview Content
+ ┣ 📂 Tests
+ ┃ ┣ 📂 AuthenticationTests
+ ┃ ┣ 📂 FavoritesTests
+ ┃ ┣ 📂 ProductDetailTests
+ ┃ ┗ 📂 UIComponentsTests
+ ┣ 📜 BookBazzar.entitlements
+ ┗ 📜 README.md
 ```
 
-### **File Breakdown**:
+### Key Components:
 
-1. **`UserSession.swift`**:
-   - **Location**: `Models/`
-   - **Purpose**: Manages the user session and password-related business logic (e.g., checking if the password meets security requirements). This is the source of truth for determining if a password is valid and holds the user’s state for authentication.
-   
-2. **`PasswordViewModel.swift`**:
-   - **Location**: `ViewModels/`
-   - **Purpose**: The `ViewModel` handles the password toggle (show/hide), validation state, and other business logic to communicate with the `UserSession`. It acts as the intermediary between the model and the view, maintaining the state needed for the password-related UI.
+1. **App Module**:
+   - **File**: `BookBazzarApp.swift`
+   - **Purpose**: Acts as the entry point of the app. Sets up the navigation, tab views, and initializes the necessary environment objects for state management.
 
-3. **`PasswordFieldView.swift`**:
-   - **Location**: `Views/`
-   - **Purpose**: Implements the **password input field**, including the logic to show/hide the password. This view listens to the state provided by the `PasswordViewModel` and updates the UI accordingly. It also provides feedback to the user, such as validation errors or visibility toggles.
+2. **Core Modules**:
+   - **Models**: Contains core data models like `Product.swift` (defining book details) and `UserSession.swift` (handling session management).
+   - **Services**: Manages the app’s business logic and API communication, such as `ProductService.swift`.
+   - **Stores**: Manages application state (e.g., `ProductStore.swift` for book listing and caching).
 
-4. **`LoginView.swift`**:
-   - **Location**: `Views/`
-   - **Purpose**: Handles the login form, including the password input field. It uses the `PasswordFieldView` as a subview for user interaction. The **login form** will be validated before passing data to the authentication mechanism.
+3. **DesignSystem Module**:
+   - **Files**: `Colors.swift`, `Spacing.swift`, `Typography.swift`
+   - **Purpose**: Defines the app's design system, including reusable constants for colors, spacing, and typography to ensure consistent styling across the app.
 
-5. **`Localizable.strings`**:
-   - **Location**: `Resources/`
-   - **Purpose**: Contains localized strings for error messages and UI text for the password feature (e.g., "Password must be at least 8 characters", "Show Password").
+4. **Features Modules**:
+   - **Authentication**: Includes views for login (`LoginView.swift`) and registration (`RegisterView.swift`).
+   - **Favorites**: Displays and manages the user's favorite books (`FavoritesView.swift`).
+   - **Book Management**: Includes the book listing (`ProductListView.swift`) and detailed view (`ProductDetailView.swift`).
+   - **Settings**: Provides user settings interface (`SettingsView.swift`).
 
----
-
-## Key Functionalities
-
-### 1. **Show/Hide Password**:
-   - The password input field provides an eye icon for toggling between showing and hiding the password text.
-   - This functionality is managed by the `PasswordViewModel`, which holds the state of `isSecured` (i.e., whether the password is hidden or visible).
-
-### 2. **Password Validation**:
-   - The system checks whether the password meets specific requirements (e.g., minimum length, containing special characters).
-   - The `UserSession` is responsible for validating the password, while the `PasswordViewModel` ensures that the validation state is reflected in the UI.
-   - Validation errors, if any, are displayed below the password field in the form of an error message.
-
-### 3. **Password Management and Security**:
-   - The app follows best practices to handle sensitive information like passwords, ensuring that the password input is secured and that the app does not store sensitive information unnecessarily.
-   - Secure password storage and handling are essential and managed by the `UserSession`.
+5. **UIComponents Module**:
+   - **Files**: `CustomButton.swift`, `CustomTextField.swift`
+   - **Purpose**: Reusable UI components like buttons and text fields are stored here for use across various feature modules.
 
 ---
 
-## Future Enhancements
+## Key Features
 
-- **Additional Validations**: You can extend the validation logic by adding more complex checks like password entropy, special characters, and unique passwords for better security.
-- **Biometric Integration**: Consider integrating with Face ID or Touch ID for seamless authentication in the future.
-- **Multi-Language Support**: Expand `Localizable.strings` for multi-language support to enhance global usability.
+1. **Modular Design**:
+   - Each feature (authentication, favorites, book listing) is organized into a separate module with its own models, views, and tests.
+
+2. **Model-View Architecture**:
+   - **Model**: Handles the core data logic, such as fetching and storing books and user sessions.
+   - **View**: SwiftUI views display the user interface, binding directly to models to display data.
+
+3. **Authentication**:
+   - Provides a simple login and registration system. Includes password visibility toggles and basic validation.
+
+4. **Favorites**:
+   - Allows users to add books to their favorites and view their favorite books in a separate list.
+
+5. **Book Management**:
+   - Displays a list of books and detailed views for each book, simulating an online book marketplace.
+
+6. **Settings**:
+   - Allows users to modify their profile and app settings.
 
 ---
 
-## License
+## Running the Project
 
-This project is licensed under the MIT License. See the LICENSE file for more information.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-repo-url.git
+   cd BookBazzar
+   ```
+
+2. **Open the Project in Xcode**:
+   - Open the project and ensure the target device or simulator is set to iOS 14.0 or later.
+
+3. **Run the App**:
+   - Once Xcode finishes building, you can run the app on the simulator or a physical device.
+
+4. **Authenticate**
+   - The usernamer is `user` and password is `password` 🫠	
+
+---
+
+## Future Improvements
+
+- **Backend Integration**: Add real backend services for data fetching and user authentication.
+- **Enhanced Validation**: Improve the password and input validation for a more robust authentication experience.
+- **Dark Mode Support**: Add support for dark mode to enhance user experience.
+- **Search Feature**: Implement a search feature to allow users to find books easily.
+
+---
+
+## Conclusion
+
+The **BookBazzar** project illustrates how to apply a **Model-View (MV)** architecture in a modular SwiftUI app. By organizing the app into independent modules and separating the UI (View) from the data (Model), the project remains scalable, maintainable, and easy to extend.
